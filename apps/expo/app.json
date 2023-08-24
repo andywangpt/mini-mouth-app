@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "[yourprojectsname]",
-    "slug": "[yourprojectsname]",
-    "scheme": "[yourprojectsname]",
+    "name": "Mini Mouth",
+    "slug": "Mini Mouth",
+    "scheme": "Mini Mouth",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "landscape",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "splash": {
@@ -18,21 +18,21 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.[yourprojectsname].app"
+      "bundleIdentifier": "com.minimouth.app"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.[yourprojectsname].app"
+      "package": "com.minimouth.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "[your_project_id]"
+        "projectId": "[minimouth]"
       }
     }
   }

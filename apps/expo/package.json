@@ -7,7 +7,8 @@
     "start": "TAMAGUI_TARGET=native npx expo start -c",
     "android": "TAMAGUI_TARGET=native npx expo run:android",
     "ios": "TAMAGUI_TARGET=native npx expo run:ios",
-    "eject": "npx expo eject"
+    "eject": "npx expo eject",
+    "dev": "TAMAGUI_TARGET=web webpack"
   },
   "dependencies": {
     "@babel/runtime": "^7.18.9",
