@@ -23,8 +23,7 @@ export function HomeScreen() {
       <YStack space="$4" maw={600}>
         <H1 ta="center">Welcome to Tamagui.</H1>
         <Paragraph ta="center">
-          Here's a basic starter to show navigating from one screen to another. This screen uses the
-          same code on Next.js and React Native.
+          hello friggin world
         </Paragraph>
 
         <Separator />
