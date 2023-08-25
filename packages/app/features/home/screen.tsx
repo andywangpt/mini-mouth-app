@@ -8,8 +8,48 @@ import  { useState } from 'react'
 import { Text } from 'react-native'
 import { GRID_DATA } from './buttonData.js';
 import * as Speech from 'expo-speech';
+import { View } from 'react-native';
+
 
 export function HomeScreen() {
+
+   const buttonStyle = {
+      justifyContent: 'center',
+      alignItems: 'center',
+      margin: 0,
+      padding: 0,
+      height: 75,
+      backgroundColor: 'darkgray',
+      width: '8.18%'
+   };
+   
+   const displayStyle = {
+      fontFamily: 'Roboto-Regular',
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+      textAlign: 'center',
+      height: 75,
+      backgroundColor: 'lightgrey',
+      margin: 2,
+      width: '57%'
+   };
+   
+   const displayContainerStyle = {
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 75,
+      width: '57%'
+   };
+
+
+//    const getDynamicFontSize = (text) => {
+//   const wordCount = text.split(" ").length;
+//   if (wordCount <= 1) return 100;  // adjust this size as required
+//   if (wordCount <= 3) return 80;
+//   if (wordCount <= 5) return 60;
+//   return 25;  // default size for longer sentences
+//    };
+   
 
    const [displayText, setDisplayText] = useState('');   
 
@@ -33,24 +73,7 @@ export function HomeScreen() {
       setDisplayText('');
    };
    
-   const buttonStyle = {
-      justifyContent: 'center',
-      alignItems: 'center',
-      margin: 0,
-      padding: 0,
-      height: 75,
-      backgroundColor: 'darkgray',
-      width: '8.18%'
-   };
    
-   const displayStyle = {
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: 75,
-      backgroundColor: 'lightgrey',
-      margin: 2,
-      width: '57%'
-  };
 
    return (
       <YStack f={1} jc="flex-start" ai="center" p="$1" space="$1">
@@ -58,7 +81,10 @@ export function HomeScreen() {
          <XStack w="100%" space="$1" jc="space-between" ai="center">
             <Button style={buttonStyle}><Text>🏠</Text></Button>
             <Button style={buttonStyle}><Text>🔍</Text></Button> 
+
             <Paragraph style={displayStyle}>{displayText}</Paragraph>
+
+            
             <Button style={buttonStyle} onPress={deleteLastWord}><Text>⬅️</Text></Button>
             <Button style={buttonStyle} onPress={clearDisplayText}><Text>X</Text></Button> 
             <Button style={buttonStyle}><Text>🏠</Text></Button>
