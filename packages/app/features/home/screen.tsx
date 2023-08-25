@@ -2,14 +2,19 @@ import {
   Button,
   Paragraph,
   XStack,
-  YStack,
+   YStack,
+  Text
 } from '@my/ui'
 import  { useState } from 'react'
-import { Text } from 'react-native'
+// import { Text } from 'react-native'
 import { GRID_DATA } from './buttonData.js';
 import * as Speech from 'expo-speech';
 import { View } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 
+import { Platform } from 'react-native';
+import { useEffect } from 'react';
+import * as Permissions from 'expo-permissions';
 
 export function HomeScreen() {
 
@@ -20,18 +25,20 @@ export function HomeScreen() {
       padding: 0,
       height: 75,
       backgroundColor: 'darkgray',
-      width: '8.18%'
+      width: '8.18%',
+      color: 'white'
    };
    
    const displayStyle = {
-      fontFamily: 'Roboto-Regular',
-      justifyContent: 'flex-end',
+      // fontFamily: 'san-serif',
+      justifyContent: 'center',
       alignItems: 'center',
       textAlign: 'center',
       height: 75,
       backgroundColor: 'lightgrey',
       margin: 2,
-      width: '57%'
+      width: '57%',
+      color: 'white'
    };
    
    const displayContainerStyle = {
@@ -41,14 +48,35 @@ export function HomeScreen() {
       width: '57%'
    };
 
+   const textStyle = {
+      color: 'white',
+      fontSize: '16',
+      
+      // justifyContent: 'center',
+      // alignItems: 'center',
+      // height: 75,
+      // width: '57%'
+   };
 
-//    const getDynamicFontSize = (text) => {
-//   const wordCount = text.split(" ").length;
-//   if (wordCount <= 1) return 100;  // adjust this size as required
-//   if (wordCount <= 3) return 80;
-//   if (wordCount <= 5) return 60;
-//   return 25;  // default size for longer sentences
-//    };
+   const dictateText = () => {
+    Speech.speak(displayText);
+};
+
+// permissions for andriod
+// useEffect(() => {
+//     if (Platform.OS === "android") {
+//         Permissions.askAsync(Permissions.AUDIO_RECORDING);
+//     }
+// }, []);
+   
+   
+   const getDynamicFontSize = (text) => {
+  const wordCount = text.split(" ").length;
+  if (wordCount <= 1) return 500;  // adjust this size as required
+  if (wordCount <= 3) return 80;
+  if (wordCount <= 5) return 60;
+  return 25;  // default size for longer sentences
+   };
    
 
    const [displayText, setDisplayText] = useState('');   
@@ -58,6 +86,13 @@ export function HomeScreen() {
          return prevText + ' ' + word;
       });
       Speech.speak(word);
+   };
+
+   const handleHelloButtonPress = (word) => {
+      setDisplayText(prevText => {
+         return prevText + 'Hi, I am Andy. ';
+      });
+      Speech.speak("Hi, I'm Andy");
    };
 
    const deleteLastWord = () => {
@@ -78,11 +113,20 @@ export function HomeScreen() {
    return (
       <YStack f={1} jc="flex-start" ai="center" p="$1" space="$1">
 
-         <XStack w="100%" space="$1" jc="space-between" ai="center">
+         <XStack w="100%" space="$0.5" jc="space-between" ai="center">
             <Button style={buttonStyle}><Text>🏠</Text></Button>
-            <Button style={buttonStyle}><Text>🔍</Text></Button> 
+            <Button style={buttonStyle} onPress={handleHelloButtonPress}><Text>🔍</Text></Button> 
 
-            <Paragraph style={displayStyle}>{displayText}</Paragraph>
+ 
+               <Button 
+               style={[
+                  displayStyle, 
+                  { fontSize: getDynamicFontSize(displayText) }
+               ]} 
+                   onPress={dictateText}>
+                   <Text>{displayText}</Text>
+               </Button>
+
 
             
             <Button style={buttonStyle} onPress={deleteLastWord}><Text>⬅️</Text></Button>
@@ -100,7 +144,7 @@ export function HomeScreen() {
                   onPress={() => {
                      if (colIndex >= 1) { 
                      handleWordButtonPress(btn.word);}}}>
-                 <Text>{btn.word}</Text>
+                 <Text style={textStyle} >{btn.word}</Text>
                </Button>
              ))}
             </XStack>

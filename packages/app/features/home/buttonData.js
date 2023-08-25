@@ -10,15 +10,28 @@
 // const LIGHT_GRAY = '#B5179E'
 // const BRIGHT_ORANGE = '#F72585'
 
-const MENU_COLOR = '#444444' // For top row buttons. You can adjust to fit the theme.
-const YELLOW = '#ffff4d'
-const GREEN = '#008000'
-const BLUE = '#4db8ff'
-const LIGHT_ORANGE = '#ffc34d'
-const LIGHT_BLUE = '#4ddbff'
-const LIGHT_RED = '#884dff'
-const LIGHT_GRAY = '#D3D3D3'
-const BRIGHT_ORANGE = '#ffaa00'
+
+//// For top row buttons. You can adjust to fit the theme.
+const MENU_COLOR = '#480CA8' //blueblack
+const YELLOW = '#005F73' //bluer
+const GREEN = '#0A9396' //teal
+const BLUE = '#94D2BD' //light green
+const LIGHT_ORANGE = '#E9D8A6' //tan
+const LIGHT_BLUE = '#EE9B00' //orange
+const LIGHT_RED = '#CA6702' //fall orange
+const LIGHT_GRAY = '#AE2012' //red
+const BRIGHT_ORANGE = '#9B2226' //deep red
+
+
+// const MENU_COLOR = '#444444' // Default
+// const YELLOW = '#ffff4d'
+// const GREEN = '#008000'
+// const BLUE = '#4db8ff'
+// const LIGHT_ORANGE = '#ffc34d'
+// const LIGHT_BLUE = '#4ddbff'
+// const LIGHT_RED = '#884dff'
+// const LIGHT_GRAY = '#D3D3D3'
+// const BRIGHT_ORANGE = '#ffaa00'
 
 const firstColumn = [
   { word: '#', color: MENU_COLOR },
@@ -87,7 +100,7 @@ const sixthColumn = [
 const seventhColumn = [
   { word: 'how much', color: BRIGHT_ORANGE },
   { word: 'more', color: LIGHT_ORANGE },
-  { word: 'less', color: LIGHT_ORANGE },
+  { word: 'good', color: LIGHT_ORANGE },
   { word: 'none', color: LIGHT_ORANGE },
   { word: 'some', color: LIGHT_ORANGE },
   { word: 'all', color: LIGHT_ORANGE },
