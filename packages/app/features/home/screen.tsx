@@ -4,7 +4,7 @@ import {
   XStack,
   YStack,
 } from '@my/ui'
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { Text } from 'react-native'
 import { GRID_DATA } from './buttonData.js';
 import * as Speech from 'expo-speech';

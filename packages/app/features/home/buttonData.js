@@ -1,14 +1,24 @@
 // buttonData.js
 
+// const MENU_COLOR = '#480CA8' // For top row buttons. You can adjust to fit the theme.
+// const YELLOW = '#4CC9F0'
+// const GREEN = '#3F37C9'
+// const BLUE = '#7209B7'
+// const LIGHT_ORANGE = '#560BAD'
+// const LIGHT_BLUE = '#ADD8E6'
+// const LIGHT_RED = '#4895EF'
+// const LIGHT_GRAY = '#B5179E'
+// const BRIGHT_ORANGE = '#F72585'
+
 const MENU_COLOR = '#444444' // For top row buttons. You can adjust to fit the theme.
-const YELLOW = '#FFFF00'
+const YELLOW = '#ffff4d'
 const GREEN = '#008000'
-const BLUE = '#0000FF'
-const LIGHT_ORANGE = '#FFA500'
-const LIGHT_BLUE = '#ADD8E6'
-const LIGHT_RED = '#FF6961'
+const BLUE = '#4db8ff'
+const LIGHT_ORANGE = '#ffc34d'
+const LIGHT_BLUE = '#4ddbff'
+const LIGHT_RED = '#884dff'
 const LIGHT_GRAY = '#D3D3D3'
-const BRIGHT_ORANGE = '#FF4500'
+const BRIGHT_ORANGE = '#ffaa00'
 
 const firstColumn = [
   { word: '#', color: MENU_COLOR },
