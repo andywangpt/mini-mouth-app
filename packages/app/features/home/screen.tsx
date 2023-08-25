@@ -26,7 +26,7 @@ export function HomeScreen() {
       height: 75,
       backgroundColor: 'darkgray',
       width: '8.18%',
-      color: 'white'
+      backgroundColor: '#99C1DE'
    };
    
    const displayStyle = {
@@ -38,7 +38,6 @@ export function HomeScreen() {
       backgroundColor: 'lightgrey',
       margin: 2,
       width: '57%',
-      color: 'white'
    };
    
    const displayContainerStyle = {
@@ -49,7 +48,7 @@ export function HomeScreen() {
    };
 
    const textStyle = {
-      color: 'white',
+      color: 'black',
       fontSize: '16',
       
       // justifyContent: 'center',
@@ -71,11 +70,11 @@ export function HomeScreen() {
    
    
    const getDynamicFontSize = (text) => {
-  const wordCount = text.split(" ").length;
-  if (wordCount <= 1) return 500;  // adjust this size as required
-  if (wordCount <= 3) return 80;
-  if (wordCount <= 5) return 60;
-  return 25;  // default size for longer sentences
+      const wordCount = text.split(" ").length;
+      if (wordCount <= 1) return 500;  // adjust this size as required
+      if (wordCount <= 3) return 80;
+      if (wordCount <= 5) return 60;
+      return 25;  // default size for longer sentences
    };
    
 
