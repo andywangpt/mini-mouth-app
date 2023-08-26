@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "45001f56-2822-4fcb-877d-083ab33827a4"
+      }
+    },
+    "android": {
+      "package": "com.wreckcreation.nextexposolitomonorepo"
+    },
+    "ios": {
+      "bundleIdentifier": "com.wreckcreation.nextexposolitomonorepo"
+    }
+  }
+}

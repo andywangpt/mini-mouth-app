@@ -6,6 +6,7 @@
     "packages/*"
   ],
   "scripts": {
+    "start": "expo start",
     "native": "cd apps/expo && yarn start",
     "watch": "yarn workspaces foreach -pi run watch",
     "vercel:install": "yarn set version 3.5 && yarn install",
@@ -14,7 +15,7 @@
     "web:prod": "yarn workspace next-app build",
     "web:prod:serve": "yarn workspace next-app serve",
     "fix": "manypkg fix",
-    "postinstall": "yarn check-deps && yarn build",
+    "postinstall": "yarn check-deps && yarn build && cd ../.. && yarn build",
     "build": "yarn workspaces foreach --exclude next-app run build",
     "upgrade:tamagui": "yarn up '*tamagui*'@latest '@tamagui/*'@latest react-native-web-lite@latest",
     "upgrade:tamagui:canary": "yarn up '*tamagui*'@canary '@tamagui/*'@canary react-native-web-lite@canary",
@@ -33,9 +34,14 @@
     "@manypkg/cli": "^0.19.1",
     "check-dependency-version-consistency": "^3.0.3",
     "eslint": "^8.21.0",
+    "expo-constants": "^14.4.2",
+    "expo-device": "^5.4.0",
     "expo-speech": "~11.1.1",
     "node-gyp": "^9.3.1",
     "prettier": "^2.7.1",
+    "react-native-draggable-flatlist": "^4.0.1",
+    "react-native-gesture-handler": "^2.12.1",
+    "react-native-reanimated": "^3.4.2",
     "react-native-tts": "^4.1.0",
     "turbo": "^1.10.3",
     "typescript": "^5.1.3"

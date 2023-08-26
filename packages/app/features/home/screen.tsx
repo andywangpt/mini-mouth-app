@@ -1,20 +1,57 @@
-import {
-  Button,
-  Paragraph,
-  XStack,
-   YStack,
-  Text
-} from '@my/ui'
-import  { useState } from 'react'
-// import { Text } from 'react-native'
-import { GRID_DATA } from './buttonData.js';
+import React, { useState, useRef } from 'react';
+import { View, Animated } from 'react-native';
+import { TouchableOpacity, LongPressGestureHandler, State } from 'react-native-gesture-handler';
 import * as Speech from 'expo-speech';
-import { View } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { GRID_DATA } from './buttonData.js';
+import { YStack, XStack, Button, Text } from '@my/ui'; // Replace with your actual imports
 
-import { Platform } from 'react-native';
-import { useEffect } from 'react';
-import * as Permissions from 'expo-permissions';
+const DraggableButton = ({ btn, onPress, onLongPress }) => {
+  const [shakeAnim] = useState(new Animated.Value(0));
+
+  const startShaking = () => {
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(shakeAnim, { toValue: 10, duration: 100, useNativeDriver: true }),
+        Animated.timing(shakeAnim, { toValue: -10, duration: 100, useNativeDriver: true })
+      ])
+    ).start();
+  };
+
+  const stopShaking = () => {
+    shakeAnim.setValue(0);
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(shakeAnim)
+      ])
+    ).stop();
+  };
+
+  return (
+    <LongPressGestureHandler
+      minDurationMs={4000}
+      onHandlerStateChange={({ nativeEvent }) => {
+        if (nativeEvent.state === State.ACTIVE) {
+          onLongPress();
+          startShaking();
+        } else {
+          stopShaking();
+        }
+      }}
+    >
+      <Animated.View
+        style={{
+          transform: [{ rotate: shakeAnim.interpolate({ inputRange: [-1, 1], outputRange: ['-0.1rad', '0.1rad'] }) }],
+        }}
+      >
+        <TouchableOpacity onPress={onPress} delayPressIn={500}>
+          <Button style={{ backgroundColor: btn.color }}>
+            <Text>{btn.word}</Text>
+          </Button>
+        </TouchableOpacity>
+      </Animated.View>
+    </LongPressGestureHandler>
+  );
+};
 
 export function HomeScreen() {
 
@@ -24,18 +61,19 @@ export function HomeScreen() {
       margin: 0,
       padding: 0,
       height: 75,
-      backgroundColor: 'darkgray',
       width: '8.18%',
-      backgroundColor: '#99C1DE'
+      backgroundColor: '#99C1DE',
+      borderRadius: '10',
+      borderWidth: 10,
+      borderColor: '#fff'
    };
    
    const displayStyle = {
       // fontFamily: 'san-serif',
       justifyContent: 'center',
       alignItems: 'center',
-      textAlign: 'center',
       height: 75,
-      backgroundColor: 'lightgrey',
+      backgroundColor: '#F0EFEB',
       margin: 2,
       width: '57%',
    };
@@ -94,6 +132,7 @@ export function HomeScreen() {
       Speech.speak("Hi, I'm Andy");
    };
 
+   
    const deleteLastWord = () => {
       setDisplayText((prevText) => {
       const words = prevText.trim().split(' ');
@@ -102,11 +141,10 @@ export function HomeScreen() {
          return words.join(' '); // Convert the array of words back into a string.
       });
    };
-
+   
    const clearDisplayText = () => {
       setDisplayText('');
    };
-   
    
 
    return (
