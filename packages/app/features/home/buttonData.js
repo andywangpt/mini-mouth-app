@@ -10,47 +10,36 @@
 // const SOCIAL_WORDS = '#B5179E'
 // const WWWHY = '#F72585'
 
+// //// BABY BLUE PALETTE 
+// const MENU_COLOR = '#99C1DE' //WHEN_WORDS
+// const WWWHY = '#FAD2E1' //deep red
+// const WHO_WORDS = '#C5DEDD' //FDE2E4 RED
+// const HOW_WORDS = '#DBE7E4' //teal
+// const WHAT_WORDS = '#F0EFEB' // FDE2E4 F0EFEB
+// const WHEN_WORDS = '#e6eeec' //EDDCD2
+// const HOWMUCH_WORDS = '#e2ece9' //tan
+// const WHERE_WORDS = '#e9f1ef' //orange
+// const WHICH_WORDS = '#dfe9e7' //C5DEDD
+// const SOCIAL_WORDS = '#99C1DE' //BCD4E6
 
-
-//// BABY BLUE PALETTE 
-const MENU_COLOR = '#99C1DE' //WHEN_WORDS
-const WWWHY = '#FAD2E1' //deep red
-const WHO_WORDS = '#C5DEDD' //FDE2E4 RED
-const HOW_WORDS = '#DBE7E4' //teal
-const WHAT_WORDS = '#F0EFEB' // FDE2E4 F0EFEB
-const WHEN_WORDS = '#e6eeec' //EDDCD2
-const HOWMUCH_WORDS = '#e2ece9' //tan
-const WHERE_WORDS = '#e9f1ef' //orange
-const WHICH_WORDS = '#dfe9e7' //C5DEDD
-const SOCIAL_WORDS = '#99C1DE' //BCD4E6
-
-
-
-// const MENU_COLOR = '#444444' // Default
-// const WHAT_WORDS = '#ffff4d'
-// const HOW_WORDS = '#008000'
-// const WHEN_WORDS = '#4db8ff'
-// const HOWMUCH_WORDS = '#ffc34d'
-// const WHERE_WORDS = '#4ddbff'
-// const WHICH_WORDS = '#884dff'
-// const SOCIAL_WORDS = '#D3D3D3'
-// const WWWHY = '#ffaa00'
-
-// const MENU_BORDER = BABY_WHEN_WORDS
-// const WWWHY = MENU_COLOR
-// const WHO_WORDS = MENU_COLOR
-// const HOW_WORDS = MENU_COLOR
-// const WHAT_WORDS = MENU_COLOR
-// const WHERE_WORDS_WORDS = MENU_COLOR
-// const WHY_WORDS = MENU_COLOR
-// const WHAT_WORDS = MENU_COLOR
+// MECH PALETTE
+const MENU_COLOR = '#636f6f'
+const WWWHY = '#ffaa00'
+const WHO_WORDS = '#8a9b9b'
+const HOW_WORDS = '#c5dedd'
+const WHAT_WORDS = '#dbe7e4'
+const WHEN_WORDS = '#f3f8f8'
+const HOWMUCH_WORDS = '#dcebeb'
+const WHERE_WORDS = '#c5dedd'
+const WHICH_WORDS = '#9eb2b1'
+const SOCIAL_WORDS = '#768585'
 
 const menuColumn = [
   { word: '#', color: MENU_COLOR },
   { word: 'core', color: MENU_COLOR },
   { word: 'phrases', color: MENU_COLOR },
   { word: 'topics', color: MENU_COLOR },
-  { word: 'keyboard', color: MENU_COLOR },
+  { word: 'key board', color: MENU_COLOR },
   { word: 'back', color: MENU_COLOR },
   { word: 'settings', color: MENU_COLOR },
   { word: '', color: MENU_COLOR },
@@ -94,7 +83,7 @@ const goColumn = [
   { word: 'give', color: HOW_WORDS },
   { word: 'take', color: HOW_WORDS },
   { word: 'make', color: HOW_WORDS },
-  { word: 'break', color: HOW_WORDS },
+  { word: 'build', color: HOW_WORDS },
   { word: 'try', color: HOW_WORDS },
 ]
 
@@ -180,11 +169,11 @@ const noColumn = [
 const GRID_DATA = [
   menuColumn,
   whoColumn,
-
+  whatColumn,
   howColumn,
   feelColumn,
   goColumn,
-  whatColumn,
+
   whenColumn,
   howMuchColumn,
   whereColumn,
@@ -200,4 +189,4 @@ const GRID_DATA = [
   return rows
 }, [])
 
-export { GRID_DATA }
+export { GRID_DATA, MENU_COLOR }

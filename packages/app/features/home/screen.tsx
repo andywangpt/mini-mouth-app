@@ -2,58 +2,28 @@ import React, { useState, useRef } from 'react';
 import { View, Animated } from 'react-native';
 import { TouchableOpacity, LongPressGestureHandler, State } from 'react-native-gesture-handler';
 import * as Speech from 'expo-speech';
-import { GRID_DATA } from './buttonData.js';
-import { YStack, XStack, Button, Text } from '@my/ui'; // Replace with your actual imports
+import { GRID_DATA, MENU_COLOR } from './buttonData.js';
+import { YStack, XStack, Button, Text, Image } from '@my/ui'; // Replace with your actual imports
 
-const DraggableButton = ({ btn, onPress, onLongPress }) => {
-  const [shakeAnim] = useState(new Animated.Value(0));
+const Logo = require('./logo.png')
 
-  const startShaking = () => {
-    Animated.loop(
-      Animated.sequence([
-        Animated.timing(shakeAnim, { toValue: 10, duration: 100, useNativeDriver: true }),
-        Animated.timing(shakeAnim, { toValue: -10, duration: 100, useNativeDriver: true })
-      ])
-    ).start();
-  };
+console.disableYellowBox = true;
 
-  const stopShaking = () => {
-    shakeAnim.setValue(0);
-    Animated.loop(
-      Animated.sequence([
-        Animated.timing(shakeAnim)
-      ])
-    ).stop();
-  };
-
+export function ImageDemo() {
   return (
-    <LongPressGestureHandler
-      minDurationMs={4000}
-      onHandlerStateChange={({ nativeEvent }) => {
-        if (nativeEvent.state === State.ACTIVE) {
-          onLongPress();
-          startShaking();
-        } else {
-          stopShaking();
-        }
+    <Image
+      source={{
+        uri: 'https://placekitten.com/200/300',
+        width: 200,
+        height: 300,
       }}
-    >
-      <Animated.View
-        style={{
-          transform: [{ rotate: shakeAnim.interpolate({ inputRange: [-1, 1], outputRange: ['-0.1rad', '0.1rad'] }) }],
-        }}
-      >
-        <TouchableOpacity onPress={onPress} delayPressIn={500}>
-          <Button style={{ backgroundColor: btn.color }}>
-            <Text>{btn.word}</Text>
-          </Button>
-        </TouchableOpacity>
-      </Animated.View>
-    </LongPressGestureHandler>
-  );
-};
+    />
+  )
+}
 
-export function HomeScreen() {
+export function HomeScreen({ Logo }) {
+   
+   const [displayText, setDisplayText] = useState('');
 
    const buttonStyle = {
       justifyContent: 'center',
@@ -62,10 +32,12 @@ export function HomeScreen() {
       padding: 0,
       height: 75,
       width: '8.18%',
-      backgroundColor: '#99C1DE',
-      borderRadius: '10',
-      borderWidth: 10,
-      borderColor: '#fff'
+      borderRadius: '100',
+      borderWidth: 1000,
+      borderSize: 100,
+      borderColor: '#fff',
+      backgroundColor: '#636f6f'
+      //MECH #636f6f
    };
    
    const displayStyle = {
@@ -77,46 +49,34 @@ export function HomeScreen() {
       margin: 2,
       width: '57%',
    };
-   
-   const displayContainerStyle = {
+
+   const menuButtonStyle = {
       justifyContent: 'center',
       alignItems: 'center',
+      margin: 0,
+      padding: 0,
       height: 75,
-      width: '57%'
+      width: '8.18%',
+      borderRadius: '10',
+      borderWidth: 10,
+      borderColor: '#fff',
+      backgroundColor: '#636f6f'
+      //MECH #636f6f
    };
 
+   
+
    const textStyle = {
-      color: 'black',
-      fontSize: '16',
-      
-      // justifyContent: 'center',
-      // alignItems: 'center',
-      // height: 75,
-      // width: '57%'
-   };
+   
+  
+  color: 'black',
+  fontWeight: 'bold',
+
+};
 
    const dictateText = () => {
     Speech.speak(displayText);
-};
-
-// permissions for andriod
-// useEffect(() => {
-//     if (Platform.OS === "android") {
-//         Permissions.askAsync(Permissions.AUDIO_RECORDING);
-//     }
-// }, []);
-   
-   
-   const getDynamicFontSize = (text) => {
-      const wordCount = text.split(" ").length;
-      if (wordCount <= 1) return 500;  // adjust this size as required
-      if (wordCount <= 3) return 80;
-      if (wordCount <= 5) return 60;
-      return 25;  // default size for longer sentences
    };
-   
-
-   const [displayText, setDisplayText] = useState('');   
 
    const handleWordButtonPress = (word) => {
       setDisplayText(prevText => {
@@ -127,11 +87,10 @@ export function HomeScreen() {
 
    const handleHelloButtonPress = (word) => {
       setDisplayText(prevText => {
-         return prevText + 'Hi, I am Andy. ';
+         return prevText + ' Hi, I am Andy. ';
       });
-      Speech.speak("Hi, I'm Andy");
+      Speech.speak(" Hi, I'm Andy ");
    };
-
    
    const deleteLastWord = () => {
       setDisplayText((prevText) => {
@@ -141,38 +100,42 @@ export function HomeScreen() {
          return words.join(' '); // Convert the array of words back into a string.
       });
    };
-   
+
    const clearDisplayText = () => {
       setDisplayText('');
    };
+
+   const getDynamicFontSize = (text) => {
+      const wordCount = text.split(" ").length+2;
    
+      if (wordCount <= 1) return 80;  // adjust this size as required
+      if (wordCount <= 3) return 100;
+      if (wordCount <= 5) return 60;
+      if (wordCount <= 7) return 50;
+      if (wordCount <= 9) return 40;
+      return 25;  // default size for longer sentences
+   };
 
    return (
-      <YStack f={1} jc="flex-start" ai="center" p="$1" space="$1">
+      <YStack f={1} jc="flex-start" ai="center" p="$1" space="$1" bg="#2e3a43">
 
          <XStack w="100%" space="$0.5" jc="space-between" ai="center">
-            <Button style={buttonStyle}><Text>🏠</Text></Button>
-            <Button style={buttonStyle} onPress={handleHelloButtonPress}><Text>🔍</Text></Button> 
-
- 
-               <Button 
-               style={[
-                  displayStyle, 
-                  { fontSize: getDynamicFontSize(displayText) }
-               ]} 
+            <Button style={menuButtonStyle}><Text>🏠</Text></Button>
+            <Button style={buttonStyle} onPress={handleHelloButtonPress}><Text>👋🏼</Text></Button> 
+               <Button ai='center'
+               style={displayStyle} 
                    onPress={dictateText}>
-                   <Text>{displayText}</Text>
+                   <Text style={[textStyle, { fontSize: getDynamicFontSize(displayText) }]}>
+  {displayText}
+</Text>
                </Button>
-
-
-            
             <Button style={buttonStyle} onPress={deleteLastWord}><Text>⬅️</Text></Button>
             <Button style={buttonStyle} onPress={clearDisplayText}><Text>X</Text></Button> 
             <Button style={buttonStyle}><Text>🏠</Text></Button>
          </XStack>
 
          {GRID_DATA.map((row, rowIndex) => (
-            <XStack key={rowIndex} w="100%" space="$1" ai="center">
+            <XStack key={rowIndex} w="100%" space="$1" jc="space-between" ai="center">
                {row.map((btn, colIndex) => (
                
                <Button 
@@ -186,7 +149,6 @@ export function HomeScreen() {
              ))}
             </XStack>
          ))}
-
       </YStack>
    )
 }
