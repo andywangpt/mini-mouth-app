@@ -1,46 +1,5 @@
-// buttonData.js
-// const feelColumn = [
-//   {
-//     id: 'feel-button',
-//     word: 'feel',
-//     color: HOW_WORDS,
-//     contextualBoard: [
-//       'furious-button',
-//       'tense-button',
-//       'bored-button',
-//       'down-button',
-//       'happy-button',
-//       'cheerful-button',
-//     ],
-//   },
-//   // ... other buttons
-// ]
 
-// const emotionsColumn = [
-//   {
-//     id: 'furious-button',
-//     word: 'furious',
-//     color: HOW_WORDS,
-//     // ... other properties
-//   },
-//   {
-//     id: 'tense-button',
-//     word: 'tense',
-//     color: HOW_WORDS,
-//     // ... other properties
-//   },
-//   // ... other buttons like 'bored', 'down', 'happy', 'cheerful'
-// ]
 
-// const MENU_COLOR = '#480CA8' // For top row buttons. You can adjust to fit the theme.
-// const WHAT_WORDS = '#4CC9F0'
-// const HOW_WORDS = '#3F37C9'
-// const WHEN_WORDS = '#7209B7'
-// const HOWMUCH_WORDS = '#560BAD'
-// const WHERE_WORDS = '#ADD8E6'
-// const WHICH_WORDS = '#4895EF'
-// const SOCIAL_WORDS = '#B5179E'
-// const WWWHY = '#F72585'
 
 // //// BABY BLUE PALETTE 
 // const MENU_COLOR = '#99C1DE' //WHEN_WORDS
@@ -53,9 +12,6 @@
 // const WHERE_WORDS = '#e9f1ef' //orange
 // const WHICH_WORDS = '#dfe9e7' //C5DEDD
 // const SOCIAL_WORDS = '#99C1DE' //BCD4E6
-
-
-
 
 
 // MECH PALETTE
