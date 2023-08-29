@@ -1,4 +1,36 @@
 // buttonData.js
+// const feelColumn = [
+//   {
+//     id: 'feel-button',
+//     word: 'feel',
+//     color: HOW_WORDS,
+//     contextualBoard: [
+//       'furious-button',
+//       'tense-button',
+//       'bored-button',
+//       'down-button',
+//       'happy-button',
+//       'cheerful-button',
+//     ],
+//   },
+//   // ... other buttons
+// ]
+
+// const emotionsColumn = [
+//   {
+//     id: 'furious-button',
+//     word: 'furious',
+//     color: HOW_WORDS,
+//     // ... other properties
+//   },
+//   {
+//     id: 'tense-button',
+//     word: 'tense',
+//     color: HOW_WORDS,
+//     // ... other properties
+//   },
+//   // ... other buttons like 'bored', 'down', 'happy', 'cheerful'
+// ]
 
 // const MENU_COLOR = '#480CA8' // For top row buttons. You can adjust to fit the theme.
 // const WHAT_WORDS = '#4CC9F0'
@@ -21,6 +53,10 @@
 // const WHERE_WORDS = '#e9f1ef' //orange
 // const WHICH_WORDS = '#dfe9e7' //C5DEDD
 // const SOCIAL_WORDS = '#99C1DE' //BCD4E6
+
+
+
+
 
 // MECH PALETTE
 const MENU_COLOR = '#636f6f'
@@ -66,6 +102,7 @@ const howColumn = [
   { word: 'help', color: HOW_WORDS },
   { word: 'like', color: HOW_WORDS },
 ]
+
 const feelColumn = [
   { word: 'feel', color: HOW_WORDS },
   { word: 'see', color: HOW_WORDS },
@@ -76,6 +113,7 @@ const feelColumn = [
   { word: 'tell', color: HOW_WORDS },
   { word: 'can', color: HOW_WORDS },
 ]
+
 const goColumn = [
   { word: 'go', color: HOW_WORDS },
   { word: 'read', color: HOW_WORDS },
@@ -172,6 +210,7 @@ const GRID_DATA = [
   whatColumn,
   howColumn,
   feelColumn,
+
   goColumn,
 
   whenColumn,
@@ -180,13 +219,13 @@ const GRID_DATA = [
 
   whichColumn,
   yesColumn,
-  noColumn,
+  noColumn
 ].reduce((rows, currentCol) => {
   currentCol.forEach((btn, index) => {
-    if (!rows[index]) rows[index] = []
-    rows[index].push(btn)
-  })
-  return rows
-}, [])
+    if (!rows[index]) rows[index] = [];
+    rows[index].push(btn);
+  });
+  return rows;
+}, []);
 
 export { GRID_DATA, MENU_COLOR }
