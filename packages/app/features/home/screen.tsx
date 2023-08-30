@@ -23,7 +23,7 @@ export function ImageDemo() {
 
 export function HomeScreen({ Logo }) {
   const [displayText, setDisplayText] = useState('');
-  const buttonArray = Object.values(GRID_DATA).flat();
+  const buttonArray = Object.values(wordButton);
 
 
   const buttonStyle = {
@@ -113,7 +113,6 @@ export function HomeScreen({ Logo }) {
   };
 
   return (
-    
     <YStack f={1} jc="flex-start" ai="center" p="$1" space="$1" bg="#2e3a43">
       <XStack w="100%" space="$0.5" jc="space-between" ai="center">
         <Button style={menuButtonStyle}>
@@ -136,23 +135,19 @@ export function HomeScreen({ Logo }) {
         </Button>
       </XStack>
 
-      {GRID_DATA.map((row, rowIndex) => (
-        <XStack key={rowIndex} w="100%" space="$1" jc="space-between" ai="center">
-          {row.map((btn, colIndex) => (
-            <Button
-              key={colIndex}
-              style={[buttonStyle, { backgroundColor: btn.color }]}
-              onPress={() => {
-                if (colIndex >= 1) {
-                  handleWordButtonPress(btn.word);
-                }
-              }}
-            >
-              <Text style={textStyle}>{btn.word}</Text>
-            </Button>
-          ))}
-        </XStack>
-      ))}
+      <FlatList
+        data={buttonArray}
+        renderItem={({ item }) => (
+          <Button
+            style={[buttonStyle, { backgroundColor: item.color }]}
+            onPress={() => handleWordButtonPress(item.word)}
+          >
+            <Text style={textStyle}>{item.word}</Text>
+          </Button>
+        )}
+        keyExtractor={(item) => item.id}
+        numColumns={12}
+      />
     </YStack>
   );
 }
