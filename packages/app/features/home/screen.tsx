@@ -1,13 +1,13 @@
 import React, { useState, useRef } from 'react';
-import { SafeAreaView, View, Animated } from 'react-native';
+import { FlatList, SafeAreaView, View, Animated } from 'react-native';
 import { TouchableOpacity, LongPressGestureHandler, State } from 'react-native-gesture-handler';
 import * as Speech from 'expo-speech';
-import { GRID_DATA, MENU_COLOR } from './buttonData.js';
+import { GRID_DATA, MENU_COLOR } from '../../../../buttonData.js';
 import { YStack, XStack, Button, Text, Image } from '@my/ui'; // Replace with your actual imports
 
+import { wordButton } from './wordButton.js'
 const Logo = require('./logo.png');
 
-console.disableYellowBox = true;
 
 export function ImageDemo() {
   return (
@@ -23,6 +23,8 @@ export function ImageDemo() {
 
 export function HomeScreen({ Logo }) {
   const [displayText, setDisplayText] = useState('');
+  const buttonArray = Object.values(GRID_DATA).flat();
+
 
   const buttonStyle = {
     justifyContent: 'center',
