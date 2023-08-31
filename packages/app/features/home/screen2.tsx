@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { FlatList, SafeAreaView, View, Animated } from 'react-native';
 import { TouchableOpacity, LongPressGestureHandler, State } from 'react-native-gesture-handler';
-import * as Speech from 'expo-speech';
+// import * as Speech from 'expo-speech';
 import { GRID_DATA, MENU_COLOR } from '../../../../buttonData.js';
 import { YStack, XStack, Button, Text, Image, Grid } from '@my/ui'; // Replace with your actual imports
 import { HomeLayout } from './HomeLayout.js';

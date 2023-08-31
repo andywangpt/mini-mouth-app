@@ -1,17 +1,31 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
+import * as Speech from 'expo-speech';
 
-export default function WordButton({ text }) {
+export default function WordButton({ text, setDisplayText }) {
+  const getButtonStyle = ({ pressed }) => {
+    return [
+      styles.button,
+      {
+        backgroundColor: pressed ? '#f1ffff' : '#636f6f',
+      },
+    ];
+  };
+
   const handleWordButtonPress = (word) => {
-    console.log('button pressed');
+    setDisplayText((prevText) => {
+      return prevText + ' ' + word;
+    });
+    Speech.speak(word);
+    console.log(word);
   };
 
   return (
-    <TouchableOpacity style={styles.button}>
+    <Pressable onPress={() => handleWordButtonPress(text)} style={getButtonStyle}>
       <View>
-        <Text styles={styles.buttonText}> {text}  </Text>
+        <Text style={styles.buttonText}> {text} </Text>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 }
 
