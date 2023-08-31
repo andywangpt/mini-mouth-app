@@ -1,28 +1,21 @@
 import React, { useState, useRef } from 'react';
 import { FlatList, SafeAreaView, View, Animated, StatusBar } from 'react-native';
-import { TouchableOpacity, LongPressGestureHandler, State } from 'react-native-gesture-handler';
-import * as Speech from 'expo-speech';
-import { GRID_DATA, MENU_COLOR } from '../../../../buttonData.js';
 import { YStack, XStack, Button, Text, Image, Grid } from '@my/ui'; // Replace with your actual imports
-import { HomeLayout } from './HomeLayout.js';
 
 import WordButton from './WordButton.js';
 import { WordData } from './WordData.js';
-// const Logo = require('./logo.png');
 
-const numRows = 8;
+import { TouchableOpacity, LongPressGestureHandler, State } from 'react-native-gesture-handler';
+import * as Speech from 'expo-speech';
+import { HomeLayout } from './HomeLayout.js';
+
 const numCols = 12;
 
+const WordButtons = WordData.map((button) => {
+  return { button };
+});
+
 export function HomeScreen() {
-  const [displayText, setDisplayText] = useState('');
-
-  //make a array of WordButtons with the words from WordData
-  const WordButtons = WordData.map((word) => {
-    return { word: word };
-  });
-
-  console.log(WordButtons[5].word.word);
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar hidden={true} />
@@ -31,7 +24,7 @@ export function HomeScreen() {
           <View style={{ flex: 1 }}></View>
           <FlatList
             data={WordButtons}
-            renderItem={({ item }) => <WordButton text={item.word.word} />}
+            renderItem={({ item }) => <WordButton text={item.button.word} />}
             keyExtractor={(item, id) => `cell_${id}`}
             numColumns={numCols}
           />
