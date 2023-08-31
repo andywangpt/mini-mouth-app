@@ -5,7 +5,6 @@ import * as Speech from 'expo-speech';
 export default function WordButton({ text, setDisplayText }) {
   const [currentText, setCurrentText] = useState(text);
   const [lastPressTime, setLastPressTime] = useState(0);
-
   const [timeoutId, setTimeoutId] = useState(null);
 
   useEffect(() => {
@@ -30,7 +29,7 @@ export default function WordButton({ text, setDisplayText }) {
     }
 
     if (timeDifference < 800) {
-      console.log('double press');
+      console.log('double press', currentText);
     } else {
       const id = setTimeout(() => {
         setDisplayText((prevText) => {
@@ -40,12 +39,18 @@ export default function WordButton({ text, setDisplayText }) {
       }, 800);
       setTimeoutId(id);
     }
-
     setLastPressTime(currentTime);
   };
 
+  const handleLongPress = () => {
+    console.log('long press', currentText);
+  };
+
   return (
-    <Pressable onPress={() => handleWordButtonPress(text)} style={getButtonStyle}>
+    <Pressable onPress={() => handleWordButtonPress(text)}
+      style={getButtonStyle}
+      onLongPress={handleLongPress}
+      delayLongPress={750}>
       <View>
         <Text style={styles.buttonText}> {text} </Text>
       </View>
