@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 import * as Speech from 'expo-speech';
 
 export default function WordButton({ text, setDisplayText }) {
+  const [currentText, setCurrentText] = useState(text);
+  const [lastPressTime, setLastPressTime] = useState(0);
+
+  const [timeoutId, setTimeoutId] = useState(null);
+
+  useEffect(() => {
+    setCurrentText(text);
+  }, [text]);
+
   const getButtonStyle = ({ pressed }) => {
     return [
       styles.button,
@@ -12,12 +21,27 @@ export default function WordButton({ text, setDisplayText }) {
     ];
   };
 
-  const handleWordButtonPress = (word) => {
-    setDisplayText((prevText) => {
-      return prevText + ' ' + word;
-    });
-    Speech.speak(word);
-    console.log(word);
+  const handleWordButtonPress = () => {
+    const currentTime = new Date().getTime();
+    const timeDifference = currentTime - lastPressTime;
+
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+
+    if (timeDifference < 800) {
+      console.log('double press');
+    } else {
+      const id = setTimeout(() => {
+        setDisplayText((prevText) => {
+          return prevText + ' ' + currentText;
+        });
+        Speech.speak(currentText);
+      }, 800);
+      setTimeoutId(id);
+    }
+
+    setLastPressTime(currentTime);
   };
 
   return (
