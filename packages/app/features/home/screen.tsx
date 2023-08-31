@@ -1,153 +1,42 @@
 import React, { useState, useRef } from 'react';
-import { FlatList, SafeAreaView, View, Animated } from 'react-native';
+import { FlatList, SafeAreaView, View, Animated, StatusBar } from 'react-native';
 import { TouchableOpacity, LongPressGestureHandler, State } from 'react-native-gesture-handler';
 import * as Speech from 'expo-speech';
 import { GRID_DATA, MENU_COLOR } from '../../../../buttonData.js';
-import { YStack, XStack, Button, Text, Image } from '@my/ui'; // Replace with your actual imports
+import { YStack, XStack, Button, Text, Image, Grid } from '@my/ui'; // Replace with your actual imports
+import { HomeLayout } from './HomeLayout.js';
 
-import { wordButton } from './wordButton.js'
-const Logo = require('./logo.png');
+import WordButton from './WordButton.js';
+import { WordData } from './WordData.js';
+// const Logo = require('./logo.png');
 
+const numRows = 8;
+const numCols = 12;
 
-export function ImageDemo() {
-  return (
-    <Image
-      source={{
-        uri: 'https://placekitten.com/200/300',
-        width: 200,
-        height: 300,
-      }}
-    />
-  );
-}
-
-export function HomeScreen({ Logo }) {
+export function HomeScreen() {
   const [displayText, setDisplayText] = useState('');
-  const buttonArray = Object.values(wordButton);
 
+  //make a array of WordButtons with the words from WordData
+  const WordButtons = WordData.map((word) => {
+    return { word: word };
+  });
 
-  const buttonStyle = {
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 0,
-    padding: 0,
-    height: 75,
-    width: '8.18%',
-    borderRadius: '100',
-    borderWidth: 1000,
-    borderSize: 100,
-    borderColor: '#fff',
-    backgroundColor: '#636f6f',
-    //MECH #636f6f
-  };
-
-  const displayStyle = {
-    // fontFamily: 'san-serif',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 75,
-    backgroundColor: '#F0EFEB',
-    margin: 2,
-    width: '57%',
-  };
-
-  const menuButtonStyle = {
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 0,
-    padding: 0,
-    height: 75,
-    width: '8.18%',
-    borderRadius: '10',
-    borderWidth: 10,
-    borderColor: '#fff',
-    backgroundColor: '#636f6f',
-    //MECH #636f6f
-  };
-
-  const textStyle = {
-    color: 'black',
-    fontWeight: 'bold',
-  };
-
-  const dictateText = () => {
-    Speech.speak(displayText);
-  };
-
-  const handleWordButtonPress = (word) => {
-    setDisplayText((prevText) => {
-      return prevText + ' ' + word;
-    });
-    Speech.speak(word);
-  };
-
-  const handleHelloButtonPress = (word) => {
-    setDisplayText((prevText) => {
-      return prevText + ' Hi, I am Andy. ';
-    });
-    Speech.speak(" Hi, I'm Andy ");
-  };
-
-  const deleteLastWord = () => {
-    setDisplayText((prevText) => {
-      const words = prevText.trim().split(' ');
-      if (words.length <= 1) return ''; // If only one word or no words, return an empty string.
-      words.pop(); // Remove the last word.
-      return words.join(' '); // Convert the array of words back into a string.
-    });
-  };
-
-  const clearDisplayText = () => {
-    setDisplayText('');
-  };
-
-  const getDynamicFontSize = (text) => {
-    const wordCount = text.split(' ').length + 2;
-
-    if (wordCount <= 1) return 80; // adjust this size as required
-    if (wordCount <= 3) return 100;
-    if (wordCount <= 5) return 60;
-    if (wordCount <= 7) return 50;
-    if (wordCount <= 9) return 40;
-    return 25; // default size for longer sentences
-  };
+  console.log(WordButtons[5].word.word);
 
   return (
-    <YStack f={1} jc="flex-start" ai="center" p="$1" space="$1" bg="#2e3a43">
-      <XStack w="100%" space="$0.5" jc="space-between" ai="center">
-        <Button style={menuButtonStyle}>
-          <Text>🏠</Text>
-        </Button>
-        <Button style={buttonStyle} onPress={handleHelloButtonPress}>
-          <Text>👋🏼</Text>
-        </Button>
-        <Button ai="center" style={displayStyle} onPress={dictateText}>
-          <Text style={[textStyle, { fontSize: getDynamicFontSize(displayText) }]}>{displayText}</Text>
-        </Button>
-        <Button style={buttonStyle} onPress={deleteLastWord}>
-          <Text>⬅️</Text>
-        </Button>
-        <Button style={buttonStyle} onPress={clearDisplayText}>
-          <Text>X</Text>
-        </Button>
-        <Button style={buttonStyle}>
-          <Text>🏠</Text>
-        </Button>
-      </XStack>
-
-      <FlatList
-        data={buttonArray}
-        renderItem={({ item }) => (
-          <Button
-            style={[buttonStyle, { backgroundColor: item.color }]}
-            onPress={() => handleWordButtonPress(item.word)}
-          >
-            <Text style={textStyle}>{item.word}</Text>
-          </Button>
-        )}
-        keyExtractor={(item) => item.id}
-        numColumns={12}
-      />
-    </YStack>
+    <SafeAreaView style={{ flex: 1 }}>
+      <StatusBar hidden={true} />
+      <YStack f={1} jc="flex-start" ai="center" p="$1" space="$1" bg="#2e3a43">
+        <XStack w="100%" space="$0.5" jc="space-between" ai="center">
+          <View style={{ flex: 1 }}></View>
+          <FlatList
+            data={WordButtons}
+            renderItem={({ item }) => <WordButton text={item.word.word} />}
+            keyExtractor={(item, id) => `cell_${id}`}
+            numColumns={numCols}
+          />
+        </XStack>
+      </YStack>
+    </SafeAreaView>
   );
 }
