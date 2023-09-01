@@ -32,18 +32,24 @@ export function HomeScreen() {
 
   const [displayText, setDisplayText] = useState('');
 
-  const handleDoublePress = (pressedButton) => {
-    console.log('pressedButton', pressedButton);
+  const handleDoublePress = (word) => {
+    console.log('pressedButton', word);
     const newLayout = buttonLayout.map((button) => {
       if (
         button.category !== 'Menu' &&
         button.category !== 'Why'
-        ) {
-        return { ...button, pressedButton };
+      ) {
+        return {
+          ...button,
+          Hello: 'World',
+        };
       }
+      console.table(button);
       return button;
     });
+
     setButtonLayout(newLayout);
+    console.log('LAY OUT', buttonLayout);
   };
 
   return (
@@ -75,7 +81,7 @@ export function HomeScreen() {
                   onDoublePress={handleDoublePress}
                 />
               )}
-              keyExtractor={(item, id) => `cell_${id}`}
+              keyExtractor={(item) => item.id}
               numColumns={numCols}
             />
           </View>

@@ -11,6 +11,7 @@ export default function WordButton({
   text,
   category,
   setDisplayText,
+  onDoublePress
 }) {
   const [currentText, setCurrentText] = useState(text);
   const [lastPressTime, setLastPressTime] = useState(0);
@@ -60,6 +61,7 @@ export default function WordButton({
     if (timeDifference < 800) {
       // double press
       console.log('double press', currentText);
+      onDoublePress({ word: currentText, category: category });
     } else {
       const id = setTimeout(() => {
         setDisplayText((prevText) => {
