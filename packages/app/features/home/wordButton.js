@@ -1,23 +1,52 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+} from 'react-native';
 import * as Speech from 'expo-speech';
 
-export default function WordButton({ text, setDisplayText }) {
+export default function WordButton({
+  text,
+  category,
+  setDisplayText,
+}) {
   const [currentText, setCurrentText] = useState(text);
   const [lastPressTime, setLastPressTime] = useState(0);
   const [timeoutId, setTimeoutId] = useState(null);
+  const [lastPressedButton, setLastPressedButton] =
+    useState(null);
 
   useEffect(() => {
     setCurrentText(text);
   }, [text]);
 
   const getButtonStyle = ({ pressed }) => {
-    return [
-      styles.button,
-      {
-        backgroundColor: pressed ? '#f1ffff' : '#636f6f',
-      },
-    ];
+    if (category === 'Menu') {
+      return [
+        styles.button,
+        {
+          backgroundColor: pressed ? '#f1ffff' : '#636f6f',
+        },
+      ];
+    }
+
+    if (category === 'WHO') {
+      return [
+        styles.button,
+        {
+          backgroundColor: pressed ? '#f1ffff' : '#8a9b9b',
+        },
+      ];
+    } else {
+      return [
+        styles.button,
+        {
+          backgroundColor: pressed ? '#f1ffff' : '#768585',
+        },
+      ];
+    }
   };
 
   const handleWordButtonPress = () => {
@@ -29,6 +58,7 @@ export default function WordButton({ text, setDisplayText }) {
     }
 
     if (timeDifference < 800) {
+      // double press
       console.log('double press', currentText);
     } else {
       const id = setTimeout(() => {
@@ -47,12 +77,14 @@ export default function WordButton({ text, setDisplayText }) {
   };
 
   return (
-    <Pressable onPress={() => handleWordButtonPress(text)}
+    <Pressable
+      onPress={() => handleWordButtonPress(text)}
       style={getButtonStyle}
       onLongPress={handleLongPress}
-      delayLongPress={750}>
+      delayLongPress={750}
+    >
       <View>
-        <Text style={styles.buttonText}> {text} </Text>
+        <Text style={styles.buttonText}>{text}</Text>
       </View>
     </Pressable>
   );
@@ -67,7 +99,8 @@ const styles = StyleSheet.create({
     width: '8.18%',
     height: 75,
     borderRadius: 10,
-    borderColor: '#fff',
+    borderColor: 'black',
+    borderWidth: 1,
     backgroundColor: '#636f6f',
     //MECH #636f6f
   },
