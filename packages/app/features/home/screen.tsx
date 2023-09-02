@@ -30,7 +30,9 @@ export function HomeScreen() {
   const [displayText, setDisplayText] = useState('');
 
   useEffect(() => {
-    console.log('Updated buttonLayout:', {buttonLayout});
+    const words = buttonLayout.map((button) => button.word);
+    console.log(words);
+
   }, [buttonLayout]);
 
   const handleDoublePress = () => {
@@ -41,10 +43,9 @@ export function HomeScreen() {
       ) {
         return {
           ...button,
-          Hello: 'World',
+          word: 'World',
         };
       }
-      console.log('47 LOG ', button.category);
       return button;
     });
 
