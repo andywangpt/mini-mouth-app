@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   FlatList,
   SafeAreaView,
@@ -13,7 +13,7 @@ import {
   Text,
   Image,
   Grid,
-} from '@my/ui'; // Replace with your actual imports
+} from '@my/ui';
 
 import WordButton from './WordButton.js';
 import { WordData } from './WordData.js';
@@ -22,18 +22,18 @@ import { HomeLayout } from './HomeLayout.js';
 
 const numCols = 12;
 
-const ButtonLayout = WordData.map((button) => {
-  return { button };
-});
-
 export function HomeScreen() {
-  const [buttonLayout, setButtonLayout] =
-    useState(ButtonLayout);
+  const [buttonLayout, setButtonLayout] = useState([
+    ...WordData,
+  ]);
 
   const [displayText, setDisplayText] = useState('');
 
-  const handleDoublePress = (word) => {
-    console.log('pressedButton', word);
+  useEffect(() => {
+    console.log('Updated buttonLayout:', {buttonLayout});
+  }, [buttonLayout]);
+
+  const handleDoublePress = () => {
     const newLayout = buttonLayout.map((button) => {
       if (
         button.category !== 'Menu' &&
@@ -44,12 +44,11 @@ export function HomeScreen() {
           Hello: 'World',
         };
       }
-      console.table(button);
+      console.log('47 LOG ', button.category);
       return button;
     });
 
     setButtonLayout(newLayout);
-    console.log('LAY OUT', buttonLayout);
   };
 
   return (
@@ -75,8 +74,8 @@ export function HomeScreen() {
               data={buttonLayout}
               renderItem={({ item }) => (
                 <WordButton
-                  text={item.button.word}
-                  category={item.button.category}
+                  text={item.word}
+                  category={item.category}
                   setDisplayText={setDisplayText}
                   onDoublePress={handleDoublePress}
                 />

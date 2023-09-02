@@ -11,18 +11,20 @@ export default function WordButton({
   text,
   category,
   setDisplayText,
-  onDoublePress
-}) {
+  onDoublePress,
+})
+{
   const [currentText, setCurrentText] = useState(text);
   const [lastPressTime, setLastPressTime] = useState(0);
   const [timeoutId, setTimeoutId] = useState(null);
+  
   const [lastPressedButton, setLastPressedButton] =
     useState(null);
 
   useEffect(() => {
     setCurrentText(text);
   }, [text]);
-
+  //-----------------------------------------------------------------------------
   const getButtonStyle = ({ pressed }) => {
     if (category === 'Menu') {
       return [
@@ -49,7 +51,7 @@ export default function WordButton({
       ];
     }
   };
-
+  //-----------------------------------------------------------------------------
   const handleWordButtonPress = () => {
     const currentTime = new Date().getTime();
     const timeDifference = currentTime - lastPressTime;
@@ -61,7 +63,7 @@ export default function WordButton({
     if (timeDifference < 800) {
       // double press
       console.log('double press', currentText);
-      onDoublePress({ word: currentText, category: category });
+      onDoublePress(currentText);
     } else {
       const id = setTimeout(() => {
         setDisplayText((prevText) => {
@@ -77,6 +79,7 @@ export default function WordButton({
   const handleLongPress = () => {
     console.log('long press', currentText);
   };
+  //-----------------------------------------------------------------------------
 
   return (
     <Pressable
@@ -92,6 +95,7 @@ export default function WordButton({
   );
 }
 
+//-----------------------------------------------------------------------------
 const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
