@@ -18,7 +18,7 @@ import {
 import WordButton from './WordButton.js';
 import { WordData } from './WordData.js';
 
-import { HomeLayout } from './HomeLayout.js';
+// import { HomeLayout } from './HomeLayout.js';
 
 const numCols = 12;
 
@@ -32,24 +32,32 @@ export function HomeScreen() {
   useEffect(() => {
     const words = buttonLayout.map((button) => button.word);
     console.log(words);
-
   }, [buttonLayout]);
 
   const handleDoublePress = () => {
+    //get word pathways
+    //get word pathways from word data
+
     const newLayout = buttonLayout.map((button) => {
       if (
-        button.category !== 'Menu' &&
-        button.category !== 'Why'
+        button.category !== 'MENU' &&
+        button.category !== 'QUESTION_WORDS'
       ) {
         return {
           ...button,
-          word: 'World',
+          word: 'How to connect this to WordData?', // <--- this is the problem
         };
       }
       return button;
     });
 
     setButtonLayout(newLayout);
+  };
+
+  const handleLongPress = () => {
+    //return prev button layout
+    setButtonLayout(WordData);
+    console.log('wordData', WordData);
   };
 
   return (
@@ -79,6 +87,8 @@ export function HomeScreen() {
                   category={item.category}
                   setDisplayText={setDisplayText}
                   onDoublePress={handleDoublePress}
+                  onLongPress={handleLongPress}
+                  setButtonLayout={setButtonLayout}
                 />
               )}
               keyExtractor={(item) => item.id}

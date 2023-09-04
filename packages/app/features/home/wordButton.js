@@ -6,18 +6,20 @@ import {
   Pressable,
 } from 'react-native';
 import * as Speech from 'expo-speech';
+import { WordData } from './WordData';
 
 export default function WordButton({
   text,
   category,
   setDisplayText,
   onDoublePress,
-})
-{
+  onLongPress,
+  setButtonLayout,
+}) {
   const [currentText, setCurrentText] = useState(text);
   const [lastPressTime, setLastPressTime] = useState(0);
   const [timeoutId, setTimeoutId] = useState(null);
-  
+
   const [lastPressedButton, setLastPressedButton] =
     useState(null);
 
@@ -26,7 +28,7 @@ export default function WordButton({
   }, [text]);
   //-----------------------------------------------------------------------------
   const getButtonStyle = ({ pressed }) => {
-    if (category === 'Menu') {
+    if (category === 'MENU') {
       return [
         styles.button,
         {
@@ -35,14 +37,91 @@ export default function WordButton({
       ];
     }
 
-    if (category === 'WHO') {
+    if (category === 'QUESTION_WORDS') {
+      return [
+        styles.button,
+        {
+          backgroundColor: pressed ? '#f1ffff' : '#ffaa00',
+        },
+      ];
+    }
+
+    if (category === 'WHO_WORDS') {
       return [
         styles.button,
         {
           backgroundColor: pressed ? '#f1ffff' : '#8a9b9b',
         },
       ];
-    } else {
+    }
+
+    if (category === 'HOW_WORDS') {
+      return [
+        styles.button,
+        {
+          backgroundColor: pressed ? '#f1ffff' : '#c5dedd',
+        },
+      ];
+    }
+
+    if (category === 'WHAT_WORDS') {
+      return [
+        styles.button,
+        {
+          backgroundColor: pressed ? '#f1ffff' : '#dbe7e4',
+        },
+      ];
+    }
+
+    if (category === 'WHEN_WORDS') {
+      return [
+        styles.button,
+        {
+          backgroundColor: pressed ? '#f1ffff' : '#f3f8f8',
+        },
+      ];
+    }
+
+    if (category === 'HOWMUCH_WORDS') {
+      return [
+        styles.button,
+        {
+          backgroundColor: pressed ? '#f1ffff' : '#dcebeb',
+        },
+      ];
+    }
+
+    if (category === 'WHERE_WORDS') {
+      return [
+        styles.button,
+        {
+          backgroundColor: pressed ? '#f1ffff' : '#c5dedd',
+        },
+      ];
+    }
+
+    if (category === 'WHICH_WORDS') {
+      return [
+        styles.button,
+        {
+          backgroundColor: pressed
+            ? '#f1ffff'
+            : '#9eb2b1',
+        },
+      ];
+    }
+    if (category === 'SOCIAL_WORDS') {
+      return [
+        styles.button,
+        {
+          backgroundColor: pressed
+            ? '#f1ffff'
+            : '#768585',
+        },
+      ];
+    }
+   
+    else {
       return [
         styles.button,
         {
@@ -51,7 +130,7 @@ export default function WordButton({
       ];
     }
   };
-  //-----------------------------------------------------------------------------
+  //-----------------------------------------------------------
   const handleWordButtonPress = () => {
     const currentTime = new Date().getTime();
     const timeDifference = currentTime - lastPressTime;
@@ -78,6 +157,7 @@ export default function WordButton({
 
   const handleLongPress = () => {
     console.log('long press', currentText);
+    setButtonLayout(WordData);
   };
   //-----------------------------------------------------------------------------
 
@@ -107,7 +187,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: 'black',
     borderWidth: 1,
-    backgroundColor: '#636f6f',
+    // backgroundColor: '#636f6f',
     //MECH #636f6f
   },
   buttonText: {

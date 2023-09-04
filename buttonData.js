@@ -16,7 +16,7 @@
 
 // MECH PALETTE
 const MENU_COLOR = '#636f6f'
-const WWWHY = '#ffaa00'
+const WWWHY = '#ffaa00';
 const WHO_WORDS = '#8a9b9b'
 const HOW_WORDS = '#c5dedd'
 const WHAT_WORDS = '#dbe7e4'
