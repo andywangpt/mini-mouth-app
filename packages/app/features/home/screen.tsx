@@ -87,7 +87,7 @@ export function HomeScreen() {
     height: 75,
     backgroundColor: '#F0EFEB',
     margin: 2,
-    width: '57%',
+    width: '58%',
   };
 
   const dictateText = () => {
@@ -173,18 +173,21 @@ export function HomeScreen() {
               {displayText}
             </Text>
           </Button>
+
           <Button
             style={menuButtonStyle}
             onPress={deleteLastWord}
           >
             <Text>⬅️</Text>
           </Button>
+
           <Button
             style={menuButtonStyle}
             onPress={clearDisplayText}
           >
             <Text>X</Text>
           </Button>
+
           <Button
             onPress={handleHomeButtonPress}
             style={menuButtonStyle}
@@ -229,10 +232,10 @@ export function HomeScreen() {
 const menuButtonStyle = {
   justifyContent: 'center',
   alignItems: 'center',
-  margin: 0,
+  margin: 1,
   padding: 0,
   height: 75,
-  width: '8.18%',
+  width: '8%',
   borderRadius: '10',
   borderWidth: 10,
   borderColor: '#fff',

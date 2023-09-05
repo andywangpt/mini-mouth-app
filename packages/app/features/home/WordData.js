@@ -478,88 +478,88 @@ export const WordData = [
     pathways: [],
   },
   {
-    id: 'you',
-    word: 'you',
+    id: 'he',
+    word: 'he',
     category: 'WHO_WORDS',
     index: [3, 0],
     pathways: [],
   },
 
   {
-    id: 'sleep',
-    word: 'sleep',
+    id: 'want',
+    word: 'want',
     category: 'HOW_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'hear',
-    word: 'hear',
+    id: 'taste',
+    word: 'taste',
     category: 'HOW_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'draw',
-    word: 'draw',
+    id: 'take',
+    word: 'take',
     category: 'HOW_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'later',
-    word: 'later',
+    id: 'after',
+    word: 'after',
     category: 'WHEN_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'less',
-    word: 'less',
+    id: 'some',
+    word: 'some',
     category: 'HOWMUCH_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'out',
-    word: 'out',
+    id: 'down',
+    word: 'down',
     category: 'WHERE_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'not',
-    word: 'not',
+    id: 'the',
+    word: 'the',
     category: 'WHAT_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'that',
-    word: 'that',
+    id: 'slow',
+    word: 'slow',
     category: 'WHICH_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'please',
-    word: 'please',
+    id: 'and',
+    word: 'and',
     category: 'SOCIAL_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'thank you',
-    word: 'thank you',
+    id: 'because',
+    word: 'because',
     category: 'SOCIAL_WORDS',
     index: [2, 0],
     pathways: [],
@@ -575,88 +575,88 @@ export const WordData = [
   },
 
   {
-    id: 'you',
-    word: 'you',
+    id: 'they',
+    word: 'they',
     category: 'WHO_WORDS',
     index: [3, 0],
     pathways: [],
   },
 
   {
-    id: 'sleep',
-    word: 'sleep',
+    id: 'help',
+    word: 'help',
     category: 'HOW_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'hear',
-    word: 'hear',
+    id: 'tell',
+    word: 'tell',
     category: 'HOW_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'draw',
-    word: 'draw',
+    id: 'break',
+    word: 'break',
     category: 'HOW_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'later',
-    word: 'later',
+    id: 'never',
+    word: 'never',
     category: 'WHEN_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'less',
-    word: 'less',
+    id: 'big',
+    word: 'big',
     category: 'HOWMUCH_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'out',
-    word: 'out',
+    id: 'there',
+    word: 'there',
     category: 'WHERE_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'not',
-    word: 'not',
+    id: 'for',
+    word: 'for',
     category: 'WHAT_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'that',
-    word: 'that',
+    id: 'middle',
+    word: 'middle',
     category: 'WHICH_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'please',
-    word: 'please',
+    id: 'sorry',
+    word: 'sorry',
     category: 'SOCIAL_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'thank you',
-    word: 'thank you',
+    id: 'excuse me',
+    word: 'excuse me',
     category: 'SOCIAL_WORDS',
     index: [2, 0],
     pathways: [],
@@ -672,88 +672,88 @@ export const WordData = [
   },
 
   {
-    id: 'you',
-    word: 'you',
+    id: 'we',
+    word: 'we',
     category: 'WHO_WORDS',
     index: [3, 0],
     pathways: [],
   },
 
   {
-    id: 'sleep',
-    word: 'sleep',
+    id: 'need',
+    word: 'need',
     category: 'HOW_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'hear',
-    word: 'hear',
+    id: 'smell',
+    word: 'smell',
     category: 'HOW_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'draw',
-    word: 'draw',
+    id: 'make',
+    word: 'make',
     category: 'HOW_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'later',
-    word: 'later',
+    id: 'almost',
+    word: 'almost',
     category: 'WHEN_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'less',
-    word: 'less',
+    id: 'all',
+    word: 'all',
     category: 'HOWMUCH_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'out',
-    word: 'out',
+    id: 'here',
+    word: 'here',
     category: 'WHERE_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'not',
-    word: 'not',
+    id: 'do',
+    word: 'do',
     category: 'WHAT_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'that',
-    word: 'that',
+    id: 'first',
+    word: 'first',
     category: 'WHICH_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'please',
-    word: 'please',
+    id: 'and',
+    word: 'and',
     category: 'SOCIAL_WORDS',
     index: [2, 0],
     pathways: [],
   },
 
   {
-    id: 'thank you',
-    word: 'thank you',
+    id: 'but',
+    word: 'but',
     category: 'SOCIAL_WORDS',
     index: [2, 0],
     pathways: [],
@@ -767,58 +767,10 @@ export const WordData = [
     pathways: [],
   },
 
-  {
-    id: 'happy',
-    word: 'Happy',
-    color: 'green',
-    category: 'HOW_WORDS',
-    index: [0, 1],
-    pathways: [
-      { id: 'ecstatic', coordinates: [1, 0] },
-      { id: 'joyful', coordinates: [1, 1] },
-      { id: 'pleased', coordinates: [1, 2] },
-    ],
-  },
+
 
   //-----------------------------------------------
-  {
-    id: 'happy',
-    word: 'happy',
-    color: 'blue',
-    category: 'HOW_WORDS',
-    index: [1, 1],
-    pathways: [
-      { id: 'happy', coordinates: [1, 0] },
-      { id: 'sad', coordinates: [1, 1] },
-      { id: 'angry', coordinates: [1, 2] },
-    ],
-  },
 
-  {
-    id: 'sad',
-    word: 'sad',
-    color: 'blue',
-    category: 'HOW_WORDS',
-    index: [1, 1],
-    pathways: [
-      { id: 'happy', coordinates: [1, 0] },
-      { id: 'sad', coordinates: [1, 1] },
-      { id: 'angry', coordinates: [1, 2] },
-    ],
-  },
-
-  {
-    id: 'angry',
-    word: 'angry',
-    color: 'blue',
-    category: 'HOW_WORDS',
-    index: [1, 1],
-    pathways: [
-      { id: 'happy', coordinates: [1, 0] },
-      { id: 'sad', coordinates: [1, 1] },
-      { id: 'angry', coordinates: [1, 2] },
-    ],
-  },
 
   // ... other buttons
 ];
