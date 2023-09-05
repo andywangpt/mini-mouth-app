@@ -40,26 +40,27 @@ export function HomeScreen() {
     );
 
     if (pressedButton && pressedButton.pathways) {
-      const pathwayWords = pressedButton.pathways.map(
-        (pathway) => pathway.id
-      );
+      const pathwayWords = pressedButton.pathways
+        .map((pathway) => pathway.id);
+      
+      const indexStart = buttonLayout.filter((button) => button.category === 'PATHWAY_WORDS' || button.category === 'MENU' || button.category === 'QUESTION_WORDS').length;
 
-      const newLayout = buttonLayout.map(
-        (button, index) => {
-          if (
-            button.category !== 'MENU' &&
-            button.category !== 'QUESTION_WORDS' &&
-            index < pathwayWords.length
-          ) {
-            return {
-              ...button,
-              word: pathwayWords[index],
-              category: 'PATHWAY_WORDS',
-            };
-          }
-          return button;
+      console.log("indexStart", indexStart)
+
+      const newLayout = buttonLayout.map((button, index) => {
+        if (
+          button.category !== 'MENU' &&
+          button.category !== 'QUESTION_WORDS' &&
+          index >= indexStart && index - indexStart < pathwayWords.length
+        ) {
+          return {
+            ...button,
+            word: pathwayWords[index - indexStart],
+            category: 'PATHWAY_WORDS',
+          };
         }
-      );
+        return button;
+      });
 
       setButtonLayout(newLayout);
     }
