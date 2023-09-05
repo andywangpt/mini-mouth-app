@@ -34,28 +34,37 @@ export function HomeScreen() {
     console.log(words);
   }, [buttonLayout]);
 
-  const handleDoublePress = () => {
-    //get word pathways
-    //get word pathways from word data
+  const handleDoublePress = (pressedWord) => {
+    const pressedButton = buttonLayout.find(
+      (button) => button.word === pressedWord
+    );
 
-    const newLayout = buttonLayout.map((button) => {
-      if (
-        button.category !== 'MENU' &&
-        button.category !== 'QUESTION_WORDS'
-      ) {
-        return {
-          ...button,
-          word: 'How to connect this to WordData?', // <--- this is the problem
-        };
-      }
-      return button;
-    });
+    if (pressedButton && pressedButton.pathways) {
+      const pathwayWords = pressedButton.pathways.map(
+        (pathway) => pathway.id
+      );
 
-    setButtonLayout(newLayout);
+      const newLayout = buttonLayout.map(
+        (button, index) => {
+          if (
+            button.category !== 'MENU' &&
+            button.category !== 'QUESTION_WORDS' &&
+            index < pathwayWords.length
+          ) {
+            return {
+              ...button,
+              word: pathwayWords[index],
+              category: 'PATHWAY_WORDS',
+            };
+          }
+          return button;
+        }
+      );
+
+      setButtonLayout(newLayout);
+    }
   };
-
   const handleLongPress = () => {
-    //return prev button layout
     setButtonLayout(WordData);
     console.log('wordData', WordData);
   };
@@ -100,3 +109,7 @@ export function HomeScreen() {
     </SafeAreaView>
   );
 }
+
+// clicked button needs to not be changed
+// clicked button needs to be highlighted
+// clicked button needs to be added to displayText

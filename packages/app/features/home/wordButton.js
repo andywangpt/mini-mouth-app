@@ -104,9 +104,7 @@ export default function WordButton({
       return [
         styles.button,
         {
-          backgroundColor: pressed
-            ? '#f1ffff'
-            : '#9eb2b1',
+          backgroundColor: pressed ? '#f1ffff' : '#9eb2b1',
         },
       ];
     }
@@ -114,14 +112,18 @@ export default function WordButton({
       return [
         styles.button,
         {
-          backgroundColor: pressed
-            ? '#f1ffff'
-            : '#768585',
+          backgroundColor: pressed ? '#f1ffff' : '#768585',
         },
       ];
     }
-   
-    else {
+    if (category === 'PATHWAY_WORDS') {
+      return [
+        styles.button,
+        {
+          backgroundColor: pressed ? '#f1ffff' : '#ffeecc',
+        },
+      ];
+    } else {
       return [
         styles.button,
         {
