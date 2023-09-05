@@ -32,7 +32,7 @@ export const WordData = [
     pathways: [
       { id: 'happy', coordinates: [1, 0] },
       { id: 'sad', coordinates: [1, 1] },
-      { id: 'suprised', coordinates: [1, 2] },
+      { id: 'suprise', coordinates: [1, 2] },
       { id: 'cheerful', coordinates: [1, 2] },
       { id: 'excited', coordinates: [1, 2] },
       { id: 'inspired', coordinates: [1, 2] },
