@@ -8,6 +8,9 @@ import {
 import * as Speech from 'expo-speech';
 import { WordData } from './WordData';
 
+import { FontAwesome5 } from '@expo/vector-icons';
+
+
 export default function WordButton({
   text,
   category,
@@ -171,6 +174,7 @@ export default function WordButton({
       delayLongPress={750}
     >
       <View>
+        <FontAwesome5 name="school" size={24} color="black" />
         <Text style={styles.buttonText}>{text}</Text>
       </View>
     </Pressable>

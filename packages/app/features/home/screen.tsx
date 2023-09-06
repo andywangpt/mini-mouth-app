@@ -20,6 +20,7 @@ import WordButton from './WordButton.js';
 import { WordData } from './WordData.js';
 import * as Speech from 'expo-speech';
 
+
 // import { HomeLayout } from './HomeLayout.js';
 
 const numCols = 12;
@@ -111,7 +112,6 @@ export function HomeScreen() {
   };
 
   const handleHomeButtonPress = () => {
-    setDisplayText('');
     setButtonLayout(WordData);
   };
 
@@ -150,14 +150,26 @@ export function HomeScreen() {
             onPress={handleHomeButtonPress}
             style={menuButtonStyle}
           >
-            <Text>🏠</Text>
+            <Text
+              style={{
+                fontSize: 35,
+              }}
+            >
+              🏠
+            </Text>
           </Button>
 
           <Button
             style={menuButtonStyle}
             onPress={handleHelloButtonPress}
           >
-            <Text>👋🏼</Text>
+            <Text
+              style={{
+                fontSize: 35,
+              }}
+            >
+              👋🏼
+            </Text>
           </Button>
 
           <Button
@@ -178,21 +190,39 @@ export function HomeScreen() {
             style={menuButtonStyle}
             onPress={deleteLastWord}
           >
-            <Text>⬅️</Text>
+            <Text
+              style={{
+                fontSize: 35,
+              }}
+            >
+              ⬅️
+            </Text>
           </Button>
 
           <Button
             style={menuButtonStyle}
             onPress={clearDisplayText}
           >
-            <Text>X</Text>
+            <Text
+              style={{
+                fontSize: 35,
+              }}
+            >
+              X
+            </Text>
           </Button>
 
           <Button
             onPress={handleHomeButtonPress}
             style={menuButtonStyle}
           >
-            <Text>🏠</Text>
+            <Text
+              style={{
+                fontSize: 35,
+              }}
+            >
+              🏠
+            </Text>
           </Button>
         </XStack>
 
