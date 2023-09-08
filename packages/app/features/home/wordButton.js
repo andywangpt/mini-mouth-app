@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Pressable,
-} from 'react-native';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
 import * as Speech from 'expo-speech';
 import { WordData } from './WordData';
 
 import { FontAwesome5 } from '@expo/vector-icons';
-
 
 export default function WordButton({
   text,
@@ -22,6 +16,26 @@ export default function WordButton({
   const [currentText, setCurrentText] = useState(text);
   const [lastPressTime, setLastPressTime] = useState(0);
   const [timeoutId, setTimeoutId] = useState(null);
+
+  const styles = StyleSheet.create({
+    button: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      margin: 1,
+      padding: 1,
+      width: '8.18%',
+      height: 75,
+      borderRadius: 10,
+      borderColor: 'black',
+      borderWidth: 1,
+      // backgroundColor: '#636f6f',
+      //MECH #636f6f
+    },
+    buttonText: {
+      color: 'black',
+      fontWeight: 'bold',
+    },
+  });
 
   const [lastPressedButton, setLastPressedButton] =
     useState(null);
@@ -182,25 +196,6 @@ export default function WordButton({
 }
 
 //-----------------------------------------------------------------------------
-const styles = StyleSheet.create({
-  button: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 1,
-    padding: 1,
-    width: '8.18%',
-    height: 75,
-    borderRadius: 10,
-    borderColor: 'black',
-    borderWidth: 1,
-    // backgroundColor: '#636f6f',
-    //MECH #636f6f
-  },
-  buttonText: {
-    color: 'black',
-    fontWeight: 'bold',
-  },
-});
 
 // const menuButtonStyle = {
 //   justifyContent: 'center',
